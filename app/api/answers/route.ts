@@ -1,4 +1,8 @@
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> aae72c0df12c0ba45bd3415e29f1f4e878315d87
 //@ts-nocheck
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
