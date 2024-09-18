@@ -1,0 +1,126 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+
+  
+  
+}
+
+datasource db {
+  provider = "mongodb"
+  url      ="mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test"
+  
+}
+
+
+model Users {
+  id                 String    @id @default(auto()) @map("_id") @db.ObjectId
+  email              String    @unique
+  hashedpassword     String?
+  image              String?
+  username           String
+  verified           Boolean ?  @default(false)
+  verifytoken        String?
+  verifytokenexpiry  DateTime?
+  otpforforgotpassword Int?
+  
+  // Prisma's automatic fields for createdAt and updatedAt
+  
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  accounts Account[] 
+  listings Listing[]
+  reservation Reservation[]
+  questions Question[]
+
+  Reviews Reviews[]
+}
+
+model Account {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  type String
+  provider String
+  provideraccountId String
+  refresh_token String? @db.String
+  access_token String? @db.String
+  expires_at Int?
+  token_type String?
+  scope String?
+  id_token String? @db.String
+  session_state String
+  user Users @relation( fields: [userId],references: [id], onDelete:Cascade)
+ @@unique([provider,provideraccountId])
+}
+
+model Reviews{
+
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  listingid  String @db.ObjectId
+  rating Int
+  userId String @db.ObjectId
+     createdat DateTime @default(now())
+  description String
+  user       Users    @relation(fields: [userId], references: [id])
+  listing Listing  @relation( fields: [listingid],references: [id],onDelete:Cascade)
+}
+
+
+model Listing{
+
+   id String @id @default(auto()) @map("_id") @db.ObjectId
+   title String
+   descriptiom String
+   imagesrc String
+   createdat DateTime @default(now())
+   category String
+   roomcount Int
+   bathroomcount Int
+   wifi Boolean?
+   tv Boolean?
+   pets Boolean?
+   view Boolean?
+   parking Boolean?
+   extrainfo String?
+   kitchen Boolean?
+   location    Json
+   guestcount Int
+   locationValue String
+   userid String @db.ObjectId
+   price Int
+   user Users @relation(fields: [userid],references: [id],onDelete:Cascade)
+   reservations  Reservation[]
+   reviews Reviews[]
+
+}
+
+model Reservation {
+id String @id @default(auto()) @map("_id") @db.ObjectId
+userid String @db.ObjectId
+listingId String @db.ObjectId
+startdate DateTime
+enddate DateTime
+totalprice Int
+createdat DateTime @default(now())
+user Users @relation(fields: [userid],references: [id],onDelete:Cascade)
+listing Listing @relation(fields: [listingId],references: [id],onDelete:Cascade)
+}
+
+
+model Question{
+
+id String @id @default(auto()) @map("_id") @db.ObjectId
+userid String @db.ObjectId
+listingId String @db.ObjectId
+question String 
+answer String?
+createdat DateTime @default(now())
+answered Boolean?
+user Users @relation(fields: [userid],references: [id],onDelete:Cascade)
+  
+}

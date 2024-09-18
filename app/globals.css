@@ -2,26 +2,318 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body{
+
+ width: 100vw;
+ 
 }
 
-@media (prefers-color-scheme: dark) {
+
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.leaflet-container{
+
+    height: 50vh;
+    z-index: 10;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* In your global CSS file (e.g., index.css) */
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 200ms ease-in-out;
   }
+  
+  .ReactModal__Overlay--after-open {
+    opacity: 1;
+    transition-duration: 1000;
+  }
+  
+  .ReactModal__Overlay--before-close {
+    opacity: 0;
+  }
+
+  /* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide ::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;   /* IE and Edge */
+    scrollbar-width: none;   /* Firefox */
+}
+
+.rdrCalendarWrapper{
+    width: 100%  !important;
+    font-size: 20px !important;
+}
+.footer {
+  background-color: #f7f7f7;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.footer-section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #555;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ff385c;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  margin-top: 40px;
+}
+
+.footer-bottom p {
+  color: #666;
+}
+
+.social-links {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.social-links li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.social-links li a {
+  color: #666;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.social-links li a:hover {
+  color: #ff385c;
+}
+
+
+
+.body {
+  margin: 0;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.collage {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 10px;
+  width: 80%;
+  border-radius: 30px;
+  max-width: 1200px;
+  height: 80vh;
+  position: relative;
+}
+
+.image {
+
+  border-radius: 10px;
+overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.image:hover img {
+  transform: scale(1.1);
+}
+
+.image1 {
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+.image2 {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.image3 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+@layer base {
+  :root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 0 0% 96.1%;
+  --secondary-foreground: 0 0% 9%;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+  --accent: 0 0% 96.1%;
+  --accent-foreground: 0 0% 9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 89.8%;
+  --input: 0 0% 89.8%;
+  --ring: 0 0% 3.9%;
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  --radius: 0.5rem;
+ 
+ 
+ 
+ }
+  .dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+}
+
+@layer base {
+  * {
+    @apply border-border;
+ 
+ 
+ 
+ }
+  body {
+    @apply bg-background text-foreground;
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+}
+
+
+
+.delete-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  gap: 10px; /* Space between items */
+  padding: 10px;
+}
+
+.gallery-item {
+  flex: 1 1 calc(50% - 10px); /* 2 items per row with gap adjustment */
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+.gallery-item img {
+  width: 100%; /* Make image fill the container */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
 }
