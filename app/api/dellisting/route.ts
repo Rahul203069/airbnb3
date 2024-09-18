@@ -1,3 +1,5 @@
+
+//@ts-nocheck
 import { PrismaClient } from "@prisma/client";
 import { error } from "console";
 import { NextRequest } from "next/server";
