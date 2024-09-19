@@ -1,4 +1,4 @@
-//@ts-nocheck
+
 import { NextRequest, NextResponse } from "next/server";
 
 import { Prisma ,PrismaClient} from "@prisma/client";
@@ -253,14 +253,18 @@ const uri = process.env.DATABASE_URL;
 
 const client = new MongoClient(uri);
             await client.connect();
-            const database = await client.db('test');
-            const collection =  await database.collection('Listing');
+            const database =  client.db('test');
+            const collection =  database.collection('Listing');
         
             // Create the geospatial index
             await collection.createIndex({ location: '2dsphere' });
         
             console.log('Index created');
+          }catch(e){
+            console.log(e);
           } finally {
+            const uri = process.env.DATABASE_URL;
+            const client = new MongoClient(uri);
             await client.close();
           }
 
