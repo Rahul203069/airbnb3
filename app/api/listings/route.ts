@@ -1,13 +1,8 @@
-//@ts-nocheck
+
 import { NextRequest, NextResponse } from "next/server";
 
-import { Prisma ,PrismaClient} from "@prisma/client";
-import { parse } from "path";
-import mongoose from 'mongoose'
+import { PrismaClient} from "@prisma/client";
 
-import { MongoClient } from "mongodb"
-import { headers } from "next/headers";
-import { IoCompassOutline } from "react-icons/io5";
 
 
 
@@ -37,13 +32,6 @@ import { IoCompassOutline } from "react-icons/io5";
 //   clientPromise = client.connect()
 // }
 
-const uri = 'mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test';
-const client = new MongoClient(uri);
-
-const database = client?.db('test');
-    const collection = database?.collection('listing');
-    
-    
     
     
     
