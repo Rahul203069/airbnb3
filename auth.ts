@@ -5,7 +5,7 @@
 
 import Users from "./app/models/Signup";
 import NextAuth from "next-auth"
-import { connectToDatabase } from "./lib/mongoose";
+
 import bcrypt from 'bcrypt'
 
 import Credentials from "next-auth/providers/credentials";

@@ -1,6 +1,6 @@
 import Users from "@/app/models/Signup";
 
-import { connectToDatabase } from "@/lib/mongoose";
+// import { connectToDatabase } from "@/lib/mongoose";
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from 'nodemailer';

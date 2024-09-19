@@ -4,7 +4,7 @@ import { NextRequest } from "next/server";
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import Users from "@/app/models/Signup";
- import { connectToDatabase } from "@/lib/mongoose"
+
 import { sendemail } from "@/app/helpers/mailer";
 import { PrismaClient } from "@prisma/client";
 const prisma=new PrismaClient();
