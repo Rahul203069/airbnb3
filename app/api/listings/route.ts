@@ -8,6 +8,7 @@ import mongoose from 'mongoose'
 import { MongoClient } from "mongodb"
 import { headers } from "next/headers";
 import { IoCompassOutline } from "react-icons/io5";
+import { Coming_Soon } from "next/font/google";
 
 
 
@@ -37,7 +38,9 @@ import { IoCompassOutline } from "react-icons/io5";
 //   clientPromise = client.connect()
 // }
 
-const uri = 'mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test';
+const uri = process.env.DATABASE_URL;
+
+console.log("datbaseurl",uri);
 const client = new MongoClient(uri);
 
 const database = client?.db('test');
