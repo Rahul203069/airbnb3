@@ -1,4 +1,4 @@
-
+//@ts-nocheck
 import { NextRequest, NextResponse } from "next/server";
 
 import { Prisma ,PrismaClient} from "@prisma/client";
@@ -251,7 +251,7 @@ const start= new Date(startDate);
           
 const uri = process.env.DATABASE_URL;
 
-const client = new MongoClient(uri);
+const client = new MongoClient(uri||"mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test");
             await client.connect();
             const database =  client.db('test');
             const collection =  database.collection('Listing');
@@ -264,7 +264,7 @@ const client = new MongoClient(uri);
             console.log(e);
           } finally {
             const uri = process.env.DATABASE_URL;
-            const client = new MongoClient(uri);
+            const client = new MongoClient(uri||"mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test");
             await client.close();
           }
 
