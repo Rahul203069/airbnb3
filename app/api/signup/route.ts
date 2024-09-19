@@ -3,7 +3,7 @@
 import { NextRequest } from "next/server";
 
 import bcrypt from 'bcrypt';
-import Users from "@/app/models/Signup";
+
 
 import { sendemail } from "@/app/helpers/mailer";
 import { PrismaClient } from "@prisma/client";

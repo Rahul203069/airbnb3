@@ -11,15 +11,6 @@ import { MongoClient } from "mongodb"
 
 
 
-
-const uri = process.env.DATABASE_URL;
-
-console.log("datbaseurl",uri);
-const client = new MongoClient(uri);
-
-const database = client?.db('test');
-    const collection = database?.collection('listing');
-    
     
     
     
@@ -256,9 +247,14 @@ const start= new Date(startDate);
         
         
         try {
+
+          
+const uri = process.env.DATABASE_URL;
+
+const client = new MongoClient(uri);
             await client.connect();
-            const database = client.db('test');
-            const collection = database.collection('Listing');
+            const database = await client.db('test');
+            const collection =  await database.collection('Listing');
         
             // Create the geospatial index
             await collection.createIndex({ location: '2dsphere' });
