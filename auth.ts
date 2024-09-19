@@ -3,7 +3,6 @@
 // @ts-nocheck
 
 
-import Users from "./app/models/Signup";
 import NextAuth from "next-auth"
 
 import bcrypt from 'bcrypt'

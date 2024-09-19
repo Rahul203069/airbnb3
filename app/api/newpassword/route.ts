@@ -1,6 +1,5 @@
 
 //@ts-nocheck
-import Users from "@/app/models/Signup";
 
 import { error } from "console";
 import bcrypt from "bcrypt";
