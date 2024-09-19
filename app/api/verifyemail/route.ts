@@ -1,6 +1,6 @@
 
 //@ts-nochecks
-import Users from "@/app/models/Signup";
+
 
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
