@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import bcryptjs from 'bcryptjs'
-import User from '../models/Signup';
+
 import { error } from 'console';
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
