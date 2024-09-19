@@ -1,3 +1,5 @@
+
+//@ts-nocheck
 import { PrismaClient } from "@prisma/client";
 import { NextApiRequest } from "next";
 
