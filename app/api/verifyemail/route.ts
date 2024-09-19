@@ -1,3 +1,5 @@
+
+//@ts-nochecks
 import Users from "@/app/models/Signup";
 import { connectToDatabase } from "@/lib/mongoose"
 import { PrismaClient } from "@prisma/client";

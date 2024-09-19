@@ -37,77 +37,77 @@ import { IoCompassOutline } from "react-icons/io5";
 //   clientPromise = client.connect()
 // }
 
+const uri = 'mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test';
+const client = new MongoClient(uri);
 
-
-
-
-
-
-
-
-// async function getListingsWithinRadius(centerLat, centerLng, radius) {
-  //     const query =[
+const database = client?.db('test');
+    const collection = database?.collection('listing');
+    
+    
+    
+    
+    
+    
+    
+    
+    // async function getListingsWithinRadius(centerLat, centerLng, radius) {
+    //     const query =[
     //       {
-      //         $geoNear: {
-        //           near: { type: "Point", coordinates: [74.8411, 34.1251] },
-        //           distanceField: "distance",
-        //           maxDistance: radius, // Radius in meters
-        //           spherical: true,
-        //         },
-        //       },
-        //       {
-          //         $match: {
-            //           price: { $lt: 100, $gt: 10 }, // Filter for  price less than 10 and greater than 100
-            //           reservations: {
+    //         $geoNear: {
+    //           near: { type: "Point", coordinates: [74.8411, 34.1251] },
+    //           distanceField: "distance",
+    //           maxDistance: radius, // Radius in meters
+    //           spherical: true,
+    //         },
+    //       },
+    //       {
+    //         $match: {
+    //           price: { $lt: 100, $gt: 10 }, // Filter for  price less than 10 and greater than 100
+    //           reservations: {
+                
+    //               $elemMatch: {
+    //                 $or: [
+    //                   { startdate: { $lt: new Date(endDate), $gte: new Date(startDate) } },
+    //                   { enddate: { $gt: new Date(startDate), $lte: new Date(endDate) } }
+    //                 ]
+                  
+    //             }
+    //           }
               
-            //               $elemMatch: {
-              //                 $or: [
-                //                   { startdate: { $lt: new Date(endDate), $gte: new Date(startDate) } },
-                //                   { enddate: { $gt: new Date(startDate), $lte: new Date(endDate) } }
-                //                 ]
-                
-                //             }
-                //           }
-                
     //         }
     //       },
     //       {
-      //         $sort: { distance: 1 }, // Sort by  distance
-      //       },
-      //     ];
-      // const prisma =new PrismaClient();
+    //         $sort: { distance: 1 }, // Sort by  distance
+    //       },
+    //     ];
+    // const prisma =new PrismaClient();
+    
+    
+    // return  await prisma.$runCommandRaw({
+    //     aggregate: 'Listing',
+    //     pipeline: query,
+    //     cursor: {}
+    //   });
       
+  
+  
+    // }
+  
+  
+  
+  export async function POST(request:NextRequest){
+  
+      const prisma =new PrismaClient();
       
-      // return  await prisma.$runCommandRaw({
-        //     aggregate: 'Listing',
-        //     pipeline: query,
-        //     cursor: {}
-        //   });
-        
-        
-        
+      // if(!session){
+        //     return Response.json({err:"no user data"});
         // }
+
         
-        
-        const uri = env('DATABASE_URL');
-        const client =  new MongoClient(uri);
-        
-        
-        export async function POST(request:NextRequest){
-          
-          const prisma =new PrismaClient();
-          
-          // if(!session){
-            //     return Response.json({err:"no user data"});
-            // }
-            
-            const database =  await client?.db('test');
-                const collection =  await database?.collection('listing');
-            
-            const jsonbody= await request.json()
-            
-            console.log("ye,lo backend")
-            const{data,user}=jsonbody;
+const jsonbody= await request.json()
+
+        console.log("ye,lo backend")
+        const{data,user}=jsonbody;
         console.log(data);
         const users=await prisma.users.findUnique({where:{email:user.email}})
        if(!users){
