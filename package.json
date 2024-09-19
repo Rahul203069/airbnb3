@@ -6,8 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
-     , "postinstall": " prisma generate"
+    "lint": "next lint",
+    "postinstall": " prisma generate"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.0.0",
@@ -40,7 +40,6 @@
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "lucide-react": "^0.438.0",
     "mongodb": "^6.6.0",
-    "mongoose": "^8.6.3",
     "next": "14.2.3",
     "next-auth": "^5.0.0-beta.20",
     "next-cloudinary": "^6.5.2",

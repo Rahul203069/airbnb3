@@ -1,14 +1,12 @@
-import Users from "@/app/models/Signup";
 
-// import { connectToDatabase } from "@/lib/mongoose";
+
 import { error } from "console";
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from 'nodemailer';
 import { Result } from "postcss";
 import {Resend }from "resend";
 import bcryptjs from 'bcryptjs';
-import {InferSchemaType} from 'mongoose'
-import { userSchema } from "@/app/models/Signup";
+
 import { redirect } from "next/navigation";
 import { PrismaClient } from "@prisma/client";
 const prisma=  new PrismaClient()

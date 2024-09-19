@@ -1,7 +1,7 @@
 
 //@ts-nocheck
 import { NextRequest } from "next/server";
-import mongoose from 'mongoose';
+
 import bcrypt from 'bcrypt';
 import Users from "@/app/models/Signup";
 

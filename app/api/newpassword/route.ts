@@ -1,7 +1,7 @@
 
 //@ts-nocheck
 import Users from "@/app/models/Signup";
-import { connectToDatabase } from "@/lib/mongoose";
+
 import { error } from "console";
 import bcrypt from "bcrypt";
 import { NextApiRequest } from "next";

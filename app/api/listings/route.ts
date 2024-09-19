@@ -10,29 +10,7 @@ import { MongoClient } from "mongodb"
 
 
 
-// if (!process.env.MONGO_URL) {
-//   throw new Error('Invalid/Missing environment variable: "MONGODB_URL"')
-// }
 
-// const uri = process.env.MONGO_URL
-// const options = {}
-
-// let client
-// let clientPromise;
-
-// if (process.env.NODE_ENV === "development") {
-//   // In development mode, use a global variable so that the value
-//   // is preserved across module reloads caused by HMR (Hot Module Replacement).
-//   if (!global._mongoClientPromise) {
-//     client = new MongoClient(uri, options)
-//     global._mongoClientPromise = client.connect()
-//   }
-//   clientPromise = global._mongoClientPromise
-// } else {
-//   // In production mode, it's best to not use a global variable.
-//   client = new MongoClient(uri, options)
-//   clientPromise = client.connect()
-// }
 
 const uri = process.env.DATABASE_URL;
 
@@ -192,14 +170,6 @@ const range= url.searchParams.get('range:');
   console.log( url.searchParams);
 
 
-
-  //   console.log(request.headers.referer('value'));
-  // const loction =params.getAll("location");
-  
-  // console.log(loction);
-  
-  // console.log(endDate.toString());
-  
   let reservations= null
   
   if(min&&maxx){
@@ -282,7 +252,7 @@ const start= new Date(startDate);
 
 
 
-        // const listings=  await prisma.listing.findMany({orderBy:{createdat:'desc'}});
+    
         
         
         try {
