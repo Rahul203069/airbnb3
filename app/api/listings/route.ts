@@ -2,13 +2,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { Prisma ,PrismaClient} from "@prisma/client";
-import { parse } from "path";
-import mongoose from 'mongoose'
+
 
 import { MongoClient } from "mongodb"
-import { headers } from "next/headers";
-import { IoCompassOutline } from "react-icons/io5";
-import { Coming_Soon } from "next/font/google";
 
 
 
