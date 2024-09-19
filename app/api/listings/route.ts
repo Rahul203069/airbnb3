@@ -9,9 +9,25 @@ import { MongoClient } from "mongodb"
 
 
 
+let client;
+let clientPromise;
 
+const uri = process.env.DATABASE_URL;
 
-    
+if (!uri) {
+  throw new Error("Please add your MongoDB URI to .env.local");
+}
+
+if (process.env.NODE_ENV === "production") {
+  client = new MongoClient(uri);
+  clientPromise = client.connect();
+} else {
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri);
+    global._mongoClientPromise = client.connect();
+  }
+  clientPromise = global._mongoClientPromise;
+}
     
     
     
@@ -246,27 +262,17 @@ const start= new Date(startDate);
     
         
         
-        try {
+          const client = await clientPromise;
+  const database = client.db('test');
+  const collection = database.collection('Listing');
 
-          
-const uri = process.env.DATABASE_URL;
-
-const client = new MongoClient(uri||"mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test");
-            await client.connect();
-            const database =  client.db('test');
-            const collection =  database.collection('Listing');
-        
-            // Create the geospatial index
-            await collection.createIndex({ location: '2dsphere' });
-        
-            console.log('Index created');
-          }catch(e){
-            console.log(e);
-          } finally {
-            const uri = process.env.DATABASE_URL;
-            const client = new MongoClient(uri||"mongodb+srv://rs3296471t:flqRiXltxjPhnh1h@cluster100.gnswa.mongodb.net/test");
-            await client.close();
-          }
+  try {
+    // Create the geospatial index
+    await collection.createIndex({ location: '2dsphere' });
+    console.log('Index created');
+  } catch (error) {
+    console.error('Error creating index:', error);
+  }
 
 
           
