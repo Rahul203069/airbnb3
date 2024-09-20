@@ -90,9 +90,8 @@ if (process.env.NODE_ENV === "production") {
         
 const jsonbody= await request.json()
 
-        console.log("ye,lo backend")
         const{data,user}=jsonbody;
-        console.log(data);
+
         const users=await prisma.users.findUnique({where:{email:user.email}})
        if(!users){
         return Response.json({error:'you are not authentictaed to createa a listing'})
@@ -183,25 +182,23 @@ const range= url.searchParams.get('range:');
   const   price=  { $lt: Number(maxx), $gt:Number(min) }
     // @ts-ignore
     let category:any= { $exists: true, $ne: null }
- reservations =   {
-    $not: {
-      $elemMatch: {
-        $or: [
-          { startdate: { $lt: new Date(endDate), $gt: new Date(startDate) } },
-          { startdate: { $lt: new Date(startDate), $gt: new Date(endDate) } },
-          { enddate: { $gt: new Date(startDate), $lt: new Date(endDate) } },
-          { enddate: { $gt: new Date(endDate), $lt: new Date(startDate) } }
-        ]
-      }
-    }
-  }
+//  reservations =   {
+//     $not: {
+//       $elemMatch: {
+//         $or: [
+//           { startdate: { $lt: new Date(endDate), $gt: new Date(startDate) } },
+//           { startdate: { $lt: new Date(startDate), $gt: new Date(endDate) } },
+//           { enddate: { $gt: new Date(startDate), $lt: new Date(endDate) } },
+//           { enddate: { $gt: new Date(endDate), $lt: new Date(startDate) } }
+//         ]
+//       }
+//     }
+//   }
 
 }
 
 
 
-const start= new Date(startDate);
-    console.log( new Date(startDate))
     
         async function getListingsWithinRadius(centerLat, centerLng, radius) {
           const query =[

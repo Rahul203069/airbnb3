@@ -47,7 +47,7 @@ if(!loader){
 
 }
     
-    }, [loader])
+    }, [loader,session])
     
   return (
     <div>
@@ -125,7 +125,7 @@ if(!loader){
    
       </DialogDescription>
     </DialogHeader>
-  <DialogFooter>{!(item.answer)&&<Button disabled={loader} onClick={()=>{ setloader(true); axios.put('/api/answers',{questions,id:item.id}).then((res)=>{setquestionset(res.data);setloader(false)})}} className='p-5'>{loader?"Posting..":"Answer"}</Button>}</DialogFooter>
+  <DialogFooter>{!(item.answer)&&<Button disabled={loader} onClick={()=>{ setloader(true); axios.put('/api/answers',{questions,id:item.id,email:session?.user?.email}).then((res)=>{setquestionset(res.data);setloader(false)})}} className='p-5'>{loader?"Posting..":"Answer"}</Button>}</DialogFooter>
   </DialogContent>
 </Dialog>
 
